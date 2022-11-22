@@ -1,56 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block body %}
+  {% comment %} <button type="button" style="width : 300px">Hello</button> {% endcomment %}
+
   
+  <hr style="border-top:1px solid #000; clear:both;"/>
 
-
-  <table border="1" style="width:750px">
-
-    <tr>
-    <th>Name</th>
-    <th>Address</th>
-    <th>Reg. NO</th>
-    <th>Taluka</th>
-    <th>District</th>
-    <th>State</th>
-    <th>Pincode</th>
-
-  </tr>
+  <table id = "table" class = "table table-bordered">
+    <thead class="alert-warning">
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Reg. NO</th>
+            <th>Taluka</th>
+            <th>District</th>
+            <th>State</th>
+            <th>Pincode</th>
+        </tr>
+    </thead>
+    <tbody>
       {% for s in student %}       
-     <tr>
-      <td>   {{ s.sname }} </td>
-      <td>   {{ s.address }} </td>
-      <td>   {{ s.reg_no }} </td>
-      <td>   {{ s.taluka }} </td>
-      <td>   {{ s.district }} </td>
-      <td>   {{ s.state }} </td>
-      <td>   {{ s.pincode }} </td>
-    </tr>
-      {% endfor %} 
+        <tr>
+          <td>   {{ s.sname }} </td>
+          <td>   {{ s.address }} </td>
+          <td>   {{ s.reg_no }} </td>
+          <td>   {{ s.taluka }} </td>
+          <td>   {{ s.district }} </td>
+          <td>   {{ s.state }} </td>
+          <td>   {{ s.pincode }} </td>
+        </tr>
+       {% endfor %} 
+    </tbody>
+</table>
 
-    {% for s in marks %}       
-     <tr>
-      <td>   {{ s.subject }} </td>
-      <td>   {{ s.marks }} </td>
-      <td>   {{ s.semester }} </td>
-      <td>   {{ s.year }} </td>
-    </tr>
-      {% endfor %} 
+{% endblock %}
 
-    {% for s in feedback %}       
-     <tr>
-      <td>   {{ s.date }} </td>
-      <td>   {{ s.feedback_message }} </td>
-    </tr>
-      {% endfor %} 
 
-  </table>
 
-</body>
-</html>
+
+

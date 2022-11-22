@@ -5,6 +5,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+      function call() {
+          window.open('https://sggs.ac.in/');
+      }
+
+      function call2() {
+          window.open('http://sggsmis.online/');
+      }
+  </script>
 
      
   </head>
@@ -28,7 +38,7 @@
       justify-content: space-between;
       text-decoration: none;
       list-style: none;
-      background : transparent;
+      background :transparent ;
     }
 
     .navitems .links{
@@ -107,7 +117,6 @@
   <body >
 
     
-    <!-- <h1>Hello, world!</h1> -->
 
     
     <div class="content">
@@ -143,11 +152,11 @@
       </div>
 
       <div class="buts">
-        <button class="official">
+        <button class="official" onclick="call()">
           Official Website
         </button>
   
-        <button class="mis">
+        <button class="mis" onclick="call2()">
           MIS Portal
         </button>
       </div>
