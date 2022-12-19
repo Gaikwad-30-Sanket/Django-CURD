@@ -45,3 +45,9 @@ class Feedback(models.Model):
   feedback_message = models.CharField(max_length=200,blank=True,null=True)
 
 
+class Person(models.Model):
+  name = models.CharField(max_length=50)
+  email = models.EmailField()
+  location = models.CharField(max_length=50)
+  def __str__(self):
+    return str(self.name) 

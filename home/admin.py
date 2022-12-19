@@ -1,4 +1,5 @@
 from django.contrib import admin
+from import_export.admin import ImportExportModelAdmin
 from .models import *
 
 # Register your models here.
@@ -48,3 +49,6 @@ class FeedbackAdmin(admin.ModelAdmin):
         
 admin.site.register(Feedback,FeedbackAdmin)
 
+@admin.register(Person)
+class PersonAdmin(ImportExportModelAdmin):
+  list_display = ('name','email','location')

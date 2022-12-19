@@ -12,4 +12,5 @@ urlpatterns = [
     path('view_data/', views.view_data ,name= 'view_data'),
     path('',views.index,name="index") ,
     path('insert/', views.insert, name='insert'),
+    path('upload/', views.simple_upload, name='simple_upload')
 ]

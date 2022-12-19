@@ -1,21 +1,40 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from home.models import *
+from django.core.mail import send_mail
+from .src import PersonResource
+from tablib import Dataset
+import pandas as pd
+
+
+# import pywhatkit
+
 
 
 # Create your views here.
 def index(request):
   return (render(request, 'index.html'))
+
 def view_stud_info(request):
   if(request.method=="POST"):
     sname = request.POST.get('sname')
     reg_no = request.POST.get('reg_no')
+    mail = request.POST.get('mail')
     address = request.POST.get('address')
     taluka = request.POST.get('taluka')
     district = request.POST.get('district')
     taluka = request.POST.get('taluka')
     state = request.POST.get('state')
-    view_stud_info = Student(address = address, taluka = taluka, district = district, state = state,sname=sname,reg_no = reg_no)
+    view_stud_info = Student(address = address, taluka = taluka, district = district, state = state,sname=sname,reg_no = reg_no )
     view_stud_info.save()
+    send_mail(
+    'Regarding registration',
+    'You have uploded your information sucessfully!',
+    'sb082024@gmail.com',
+    [mail],
+    fail_silently=False,
+   )
+
   return(render(request, 'student.html'))
 
 def view_marks(request):
@@ -53,3 +72,21 @@ def insert(request):
     print("LOL")
     Student.save()
     return redirect('/')
+  
+ 
+  
+def simple_upload(request):
+  if request.method == 'POST':
+    person_resource = PersonResource()
+    dataset = Dataset()
+    new_person = request.FILES('myfile')
+    imported_data = dataset.load(new_person.read(), format='xlsx')
+    for data in imported_data:
+      value = Person(
+        data[0],
+        data[1],
+        data[2],
+        data[3]
+      )
+      value.save()
+  return render(request, 'upload.html')

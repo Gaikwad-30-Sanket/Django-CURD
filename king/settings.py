@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
+    'app',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +126,10 @@ STATICFILES_DIRS = ((os.path.join(BASE_DIR, 'static')), )
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'kings.of.sb08@gmail.com'
+EMAIL_HOST_PASSWORD = 'xuelaluinuxhhqmy'
+EMAIL_USE_TLS = True 
